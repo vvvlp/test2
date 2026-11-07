@@ -1,0 +1,484 @@
+/*
+
+https://codingeverybody.kr/
+
+http://developer.mozilla.org/
+
+*/
+
+/* /////////////////////////////////////////////////////////////////////////////////////////////////// */
+/* 기본 설정들 */
+
+*
+{
+	margin : 0 ;
+	padding : 0 ;
+	border : 0 ;
+	overflow : hidden ;
+	background : transparent ;
+	color : var(--강조1) ;
+	font-size : 22px ;
+	font-family: "Noto Sans KR", sans-serif;
+	font-optical-sizing: auto;
+	font-weight: 400;
+	font-style: normal;
+	cursor : default ;
+}
+
+:root
+{
+	--오른쪽바탕색 : #021322 ;
+	--왼쪽바탕색 : #230213 ;
+	--강조1 : #FFD700 ;
+	--강조2 : #800020 ;
+	--강조3 : #ffffff ;
+	--가로 : 160px ;
+	--세로 : 90px ;
+}
+
+body
+{
+	width : 100% ;
+	width : 100vw ;
+	width : 100dvw ;
+	height : 100% ;
+	height : 100vh ;
+	height : 100dvh ;
+}
+
+#화면
+{
+	display : grid ;
+	grid-template-columns : minmax(0, 3fr) minmax(0, 2fr) ;
+	grid-template-rows : 100% ;
+	height : 100% ;
+}
+
+#왼쪽_이름,
+#오른쪽,
+#오른쪽_안내
+{
+	display: flex ;
+	flex-direction: column ;
+	align-items: center ;
+}
+
+#처음으로
+{
+	position : fixed ;
+	right : 3px;
+	bottom : 3px;
+	z-index : 3;
+}
+
+/* 기본 설정들 */
+/* /////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+
+
+/* /////////////////////////////////////////////////////////////////////////////////////////////////// */
+/* 공공재 */
+
+.머리말,
+.본문
+{
+	width : 90% ;
+}
+
+.머리말
+{
+	min-height : 30px ;
+	border-bottom : 3px solid var(--강조2) ;
+	padding-bottom : 3px ;
+	display : flex ;
+	align-items : center ;
+}
+
+.대기열
+{
+	width : 100% ;
+	height : 100% ;
+	font-size : 60px ;
+}
+
+#화면 img
+{
+	width : 100% ;
+	height : 100% ;
+	object-fit : cover ;
+}
+
+.문자열_클릭
+{
+	cursor : pointer ;
+}
+
+#화면 button > span
+{
+	cursor : pointer ;
+}
+
+/* 공공재 */
+/* /////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+
+
+/* /////////////////////////////////////////////////////////////////////////////////////////////////// */
+/* 왼쪽 최초 화면 */
+
+#왼쪽_이름
+{
+	grid-area : 1 / 1 ;
+	background : var(--왼쪽바탕색) ;
+	z-index : 1 ;
+}
+
+#가나다,
+#A_Z,
+#소속
+{
+	display : grid ;
+	grid-template-columns : repeat(7, 2fr 1fr) ;
+	width : 100% ;
+}
+
+.자음_상자,
+.자음_번호,
+.이름표,
+.버튼,
+.재생_시작_버튼,
+.대기열
+{
+	display : flex ;
+	align-items : center ;
+	justify-content : center ;
+}
+
+.이름표들
+{
+	display : flex ;
+	flex-wrap : wrap ;
+	padding-top: 10px ;
+}
+
+.이름표
+{
+	flex : 0 0 200px ;
+	height : 30px ;
+}
+
+.이름표 span
+{
+	color: var(--강조3) ;
+}
+
+.이름표 span:hover
+{
+	color: var(--강조1) ;
+}
+
+/* 왼쪽 최초 화면 */
+/* /////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+
+
+/* /////////////////////////////////////////////////////////////////////////////////////////////////// */
+/* 오른쪽 최초 화면 */
+
+#오른쪽_안내
+{
+	grid-area : 1 / 2 ;
+	background : var(--오른쪽바탕색) ;
+	z-index : 1 ;
+}
+
+/* 오른쪽 최초 화면 */
+/* /////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+
+
+/* /////////////////////////////////////////////////////////////////////////////////////////////////// */
+/* 왼쪽 본문 화면 */
+
+#왼쪽
+{
+	grid-area : 1 / 1 ;
+	display : grid ;
+	background : var(--왼쪽바탕색) ;
+}
+
+.구역 > .머리말 > *,
+.머리말_페이지 > *,
+.머리말_종류 > *,
+.버튼_지금 > *
+{
+	flex : 1 ;
+	display : flex ;
+	justify-content : space-evenly ;
+}
+
+.구역
+{
+	display : flex ;
+	flex-direction : column ;
+	align-items : center ;
+}
+
+.구역[data-종류=원곡],
+.구역[data-종류=커버],
+.구역[data-종류=동영상],
+.구역[data-종류=쇼츠]
+{
+	display : grid ;
+	grid-template-rows : auto minmax(0, 1fr) ;
+	justify-items : center ;
+	align-items : stretch ;
+}
+
+.구역[data-종류=부분] .본문
+{
+	display : grid ;
+	grid-template-rows : minmax(0, 0fr) minmax(0, 1fr) ;
+	flex : 1 ;
+	padding-top : 9px ;
+}
+
+.구역[data-종류=부분][data-크기=커짐] .본문
+{
+	grid-template-rows : minmax(0, 1fr) minmax(0, 0fr) ;
+}
+
+.크기_계산
+{
+	margin : 9px auto 0 ;
+	width : 100% ;
+	height : 100% ;
+	max-width : round(down, 100%, var(--가로)) ;
+	max-height : round(down, 100%, var(--세로)) ;
+}
+
+.크기_계산.쇼츠
+{
+	max-width : round(down, 100%, var(--세로)) ;
+	max-height : round(down, 100%, var(--가로)) ;
+}
+
+.크기_계산.쇼츠 .버튼
+{
+	width : var(--세로) ;
+	height : var(--가로) ;
+}
+
+.크기_계산.부분
+{
+	max-width : none ;
+	max-height : none ;
+}
+
+.페이지
+{
+	display : grid ;
+	grid-template-columns : repeat(auto-fill, var(--가로)) ;
+}
+
+.페이지.쇼츠
+{
+	grid-template-columns : repeat(auto-fill, var(--세로)) ;
+}
+
+.페이지.부분
+{
+	display : flex ;
+	flex-direction : column ;
+	gap : 3px ;
+}
+
+.버튼
+{
+	width : var(--가로) ;
+	height : var(--세로) ;
+}
+
+.버튼:hover
+{
+	outline : 3px solid var(--강조1) ;
+	outline-offset : -3px ;
+}
+
+.재생_시작_버튼
+{
+	width : 100% ;
+}
+
+.재생_시작_버튼 span
+{
+	background : var(--강조2) ;
+	padding: 0 9px ;
+}
+
+#화면 .재생_시작_버튼:disabled
+{
+	opacity : 0.5 ;
+}
+
+.드롭다운_공간
+{
+	height : 100% ;
+}
+
+.드롭다운_칸
+{
+	display : grid ;
+	grid-template-columns : minmax(0, 3fr) minmax(0, 1fr) ;
+	width : 100% ;
+}
+
+.드롭다운_선택
+{
+	width : 100% ;
+	min-width : 0 ;
+	border : 1px solid var(--강조2) ;
+	cursor : pointer ;
+}
+
+.드롭다운_선택 option
+{
+	background : var(--왼쪽바탕색) ;
+	white-space : pre ;
+	tab-size : 200px ;
+}
+
+.노래_항목
+{
+	display : grid ;
+	grid-template-columns : minmax(0, 1.5fr) minmax(0, 0fr) minmax(0, 1.5fr) minmax(0, 1fr) ;
+	flex : 0 0 30px ;
+}
+
+.노래_항목:hover
+{
+	background : rgba(255, 255, 255, 0.15) ;
+}
+
+.노래_칸
+{
+	display : flex ;
+	align-items : center ;
+	height : 30px ;
+	min-width : 0 ;
+	white-space : nowrap ;
+}
+
+.노래_이름
+{
+	justify-content : flex-end ;
+	padding-right : 9px ;
+}
+
+.노래_구분선
+{
+	width : 0 ;
+	height : 66% ;
+	padding : 0 1.5px ;
+	background : var(--강조2) ;
+	justify-self : center ;
+	align-self : center ;
+}
+
+.노래_제목
+{
+	padding-left : 9px ;
+}
+
+/* 왼쪽 본문 화면 */
+/* /////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+
+
+/* /////////////////////////////////////////////////////////////////////////////////////////////////// */
+/* 오른쪽 본문 화면 */
+
+#오른쪽
+{
+	grid-area : 1 / 2 ;
+	gap : 3px ;
+	background : var(--오른쪽바탕색) ;
+}
+
+#오른쪽 .본문
+{
+	display : flex ;
+	flex-direction : column ;
+	align-items : center ;
+}
+
+#player,
+#재생_시간_표시줄,
+#동영상_제목,
+#볼륨
+{
+	width : 100% ;
+	max-width : 960px ;
+}
+
+#player
+{
+	aspect-ratio : 16 / 9 ;
+	margin-bottom : 9px ;
+	z-index : 1 ;
+}
+
+#player iframe
+{
+	width : 100% ;
+	height : 100% ;
+	display : block ;
+}
+
+#재생_시간_표시줄
+{
+	height : 9px ;
+	background : #000000 ;
+	margin-bottom : 9px ;
+}
+
+#재생_시간_지금
+{
+	height : 100% ;
+	width : 0% ;
+	background : var(--강조2) ;
+}
+
+#동영상_제목
+{
+	text-align : center ;
+	box-sizing : border-box ;
+	padding : 0 3% ;
+}
+
+#볼륨
+{
+	display : flex ;
+	align-items : center ;
+	height : 50px ;
+}
+
+#볼륨_조절
+{
+	flex : 1 ;
+	accent-color : var(--강조2) ;
+	height : 6px ;
+}
+
+#볼륨_조절:hover
+{
+	cursor : grab ;
+}
+
+#볼륨_조절:active
+{
+	cursor : grabbing ;
+}
+
+/* 오른쪽 본문 화면 */
+/* /////////////////////////////////////////////////////////////////////////////////////////////////// */

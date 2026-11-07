@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+
+<html lang = "ko">
+
+<head>
+	<meta charset = "UTF-8">
+	<title>유튜브 구간 반복 재생</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+	<link rel = "stylesheet" href = "css/화면.css">
+</head>
+
+<body>
+	<main id = "화면">
+
+		<button id = "처음으로"><span>처음으로</span></button>
+
+		<section id = "왼쪽_이름">
+			<header class = "머리말">
+				<menu id = "가나다"></menu>
+				<!-- <menu id = "A_Z"></menu> -->
+				<!-- <menu id = "소속"></menu> -->
+			</header>
+			<!-- <section 본문><이름표들></section> -->
+		</section>
+		<section id = "오른쪽_안내">
+			<header class = "머리말">
+				<!-- 안내할 목록들 -->
+			</header>
+			<section class = "본문">
+			</section>
+		</section>
+
+
+
+		<section id = "왼쪽">
+		</section>
+		<section id = "오른쪽">
+			<header class = "머리말">
+				<!-- <menu id = "유튜브 치지직 링크 들어갈 자리"></menu> -->
+			</header>
+			<section class = "본문">
+				<section id = "player">
+					<div id = "YTP"></div>
+				</section>
+				<div id = "재생_시간_표시줄">
+					<div id = "재생_시간_지금"></div>
+				</div>
+				<div id = "동영상_제목">
+					<span id = "제목표시줄">재생 목록에서 선택하세요</span>
+				</div>
+				<div id = "볼륨">
+					<input id = "볼륨_조절" type = "range" min = "0" max = "100" value = "25" step = "1">
+				</div>
+			</section>
+		</section>
+
+	</main>
+
+	<script src = "js/준비.js"></script>
+	<script src = "js/명령.js"></script>
+</body>
+
+</html>
